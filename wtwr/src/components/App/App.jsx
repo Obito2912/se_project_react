@@ -4,6 +4,7 @@ import './App.css'
 import { coordinates, APIkey } from '../../utils/constants'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
+import Footer from '../Footer/Footer'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import ItemModal from '../ItemModal/ItemModal'
 import { getWeather, filterWeatherData } from '../../utils/weatherApi'
@@ -25,7 +26,7 @@ function App() {
   const handleAddClick = () => {
     setActiveModal('add-garment');
   };
-  
+
   const onClose = () => {
     setActiveModal('');
   };
@@ -44,6 +45,7 @@ function App() {
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Footer />
       </div>
       <ModalWithForm
         title='New garment'
@@ -91,7 +93,7 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
-      <ItemModal activeModal={activeModal} card={selectedCard} onClose={onClose}/>
+      <ItemModal activeModal={activeModal} card={selectedCard} onClose={onClose} />
     </div>
   )
 }
