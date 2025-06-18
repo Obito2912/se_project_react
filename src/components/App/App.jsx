@@ -1,13 +1,17 @@
+// UTILITIES
 import { useEffect, useState } from 'react'
-
-import './App.css'
+import { getWeather, filterWeatherData } from '../../utils/weatherApi'
 import { coordinates, APIkey } from '../../utils/constants'
+
+// COMPONENTS
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import ItemModal from '../ItemModal/ItemModal'
-import { getWeather, filterWeatherData } from '../../utils/weatherApi'
+
+// STYLES
+import './App.css'
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -50,7 +54,7 @@ function App() {
       <ModalWithForm
         title='New garment'
         buttonText='Add garment'
-        activeModal={activeModal}
+        isOpen={activeModal === "add-garment"}
         onClose={onClose}>
         <label htmlFor="name" className="modal__label">
           Name <input
@@ -74,6 +78,7 @@ function App() {
             <input
               id="hot"
               type="radio"
+              name='temperature'
               className="modal__radio-input" />
             Hot
           </label>
@@ -81,6 +86,7 @@ function App() {
             <input
               id="warm"
               type="radio"
+              name='temperature'
               className="modal__radio-input" />
             Warm
           </label>
@@ -88,12 +94,13 @@ function App() {
             <input
               id="cold"
               type="radio"
+              name='temperature'
               className="modal__radio-input" />
             Cold
           </label>
         </fieldset>
       </ModalWithForm>
-      <ItemModal activeModal={activeModal} card={selectedCard} onClose={onClose} />
+      <ItemModal isOpen={activeModal === "preview"} card={selectedCard} onClose={onClose} />
     </div>
   )
 }

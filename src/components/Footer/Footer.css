@@ -4,7 +4,8 @@
     margin: 85px 0 24px;
 }
 
-.footer__content>p {
+.footer__developer,
+.footer__year {
     margin: 0;
     font-weight: 600;
 }
