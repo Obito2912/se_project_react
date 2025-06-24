@@ -12,6 +12,6 @@
     font-size: 24px;
 }
 
-.modal__content_type_image {
+.modal__content.modal__content_type_image {
     padding: 0 0 36px;
 }

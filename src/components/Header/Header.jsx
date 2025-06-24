@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 import avatar from '../../images/avatar.svg'
 import logo from '../../images/logo.svg'
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch'
 
 function Header({ handleAddClick, weatherData }) {
 
@@ -11,8 +13,11 @@ function Header({ handleAddClick, weatherData }) {
 
   return (
     <header className="header">
-      <img className='header__logo' src={logo} alt="Logo Image" />
+      <Link to='/'>
+        <img className='header__logo' src={logo} alt="Logo Image" />
+      </Link>
       <p className="header__date-location">{currentDate}, {weatherData.city}</p>
+      <ToggleSwitch />
       <button type='button' onClick={handleAddClick} className="header__add-clothes-btn">+ Add clothes</button>
       <div className="header__user-container">
         <p className="header__username">Terrence Tegegne</p>
