@@ -1,0 +1,17 @@
+.sidebar {
+    display: flex;
+    gap: 16px;
+}
+
+.sidebar__avatar {
+    width: 56px;
+    height: 56px;
+}
+
+.sidebar__username {
+    margin: 0 116px 0 0;
+    text-wrap: nowrap;
+    place-content: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+}

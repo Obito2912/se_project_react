@@ -5,13 +5,15 @@
     font-weight: bold;
 }
 
-.header__logo {
-    margin-right: 24px;
+.header__logo,
+.header__logo-link {
+    width: 89px;
+    height: 40px;
 }
 
 .header__date-location,
 .header__username {
-    margin: 0;
+    margin: 0 0 0 24px;
 }
 
 .header__username {
@@ -30,4 +32,11 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    cursor: default;
+    text-decoration: none;
+}
+
+.header__link {
+ color: #000;
+ cursor: pointer;
 }
