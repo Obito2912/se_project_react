@@ -11,7 +11,7 @@ import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 import AddItemModal from '../AddItemModal/AddItemModal'
 import ItemModal from '../ItemModal/ItemModal'
-import CurrentTemperatureUnitContext from '../contexts/CurrentTemperatureUnitContext'
+import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 import Profile from '../Profile/Profile'
 import DeleteItemModal from '../DeleteItemModal/DeleteItemModal'
 
