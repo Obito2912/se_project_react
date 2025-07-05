@@ -106,7 +106,11 @@ function App() {
                     weatherData={weatherData}
                     clothingItems={clothingItems}
                   />} />
-                <Route path='/profile' element={<Profile onCardClick={handleCardClick} clothingItems={clothingItems} />} />
+                <Route path='/profile' element={
+                  <Profile
+                    onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                    handleAddClick={handleAddClick} />} />
               </Routes>
             </>
           )}

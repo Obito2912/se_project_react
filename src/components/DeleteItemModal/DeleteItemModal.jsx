@@ -14,7 +14,7 @@ function DeleteItemModal({ isOpen, onClose, onDeleteModalSubmit }) {
 
                 <form onSubmit={onDeleteModalSubmit} className="modal__form-delete">
                     <button type='submit' className="modal__submit-confirm-delete">Yes, delete item</button>
-                    <button onClick={onClose} className="modal__submit-cancel-delete">Cancel</button>
+                    <button type='button' onClick={onClose} className="modal__submit-cancel-delete">Cancel</button>
                 </form>
             </div>
         </div>
