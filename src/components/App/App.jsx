@@ -58,19 +58,23 @@ function App() {
     // const newId = Math.max(...clothingItems.map(item => item._id)) + 1;
     // Update clothingItems Array
     addItem({ name, imageUrl, weather })
-      .then(newItem => setClothingItems(prev => [newItem, ...prev]))
+      .then(newItem => {
+        // setClothingItems(prevItems => [{ name, imageUrl, weather/* , _id: newId */}, ...prevItems]);
+        setClothingItems(prev => [newItem, ...prev])
+        // Close the modal
+        onClose();
+      }) 
       .catch(console.error);
-    // setClothingItems(prevItems => [{ name, imageUrl, weather/* , _id: newId */}, ...prevItems]);
-    // Close the modal
-    onClose();
   }
 
   const handleDeleteItemModalSubmit = (e, itemId) => {
     e.preventDefault();
     deleteItem(itemId)
-      .then(() => setClothingItems(prev => prev.filter(item => item._id !== itemId)))
+      .then(() => {
+        setClothingItems(prev => prev.filter(item => item._id !== itemId))
+        onClose();
+      }) 
       .catch(console.error);
-    onClose();
   }
 
   useEffect(() => {
@@ -87,7 +91,7 @@ function App() {
     getItems().then(data => {
       console.log(data);
       // set clothing items 
-      setClothingItems(data)
+      setClothingItems(data.reverse());
     })
       .catch(console.error)
   }, []);

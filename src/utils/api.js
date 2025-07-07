@@ -1,8 +1,17 @@
 const baseUrl = "http://localhost:3001";
 
-function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-}
+const checkResponse = (res, customErrorMessage) => {
+  if (res.ok) {
+    return res.json();
+  }
+
+  const baseMessage = `Error: ${res.status}`;
+  const fullMessage = customErrorMessage
+    ? `${customErrorMessage} (${baseMessage})`
+    : baseMessage;
+
+  return Promise.reject(fullMessage);
+};
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(checkResponse);
@@ -21,11 +30,7 @@ function addItem({ name, imageUrl, weather }) {
 function deleteItem(id) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-  }).then((res) => {
-    if (!res.ok) {
-      throw new Error("Failed to delete item");
-    }
-  });
+  }).then((res) => checkResponse(res, "Failed to delete item"));
 }
 
 export { getItems, addItem, deleteItem, checkResponse };
