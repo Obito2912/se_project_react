@@ -1,8 +1,9 @@
 import './ModalWithForm.css'
 import button from '../../images/close-btn.svg'
+import { useState } from 'react'
 
 function ModalWithForm({ children, buttonText, title, onClose, isOpen, onSubmit }) {
-
+  const [isValid, setIsValid] = useState(false);
   return (
     <div className= {`modal ${isOpen && 'modal__opened'}`}>
       <div className="modal__content">
@@ -11,9 +12,9 @@ function ModalWithForm({ children, buttonText, title, onClose, isOpen, onSubmit 
           <img src={button} alt="Close button" />
         </button>
 
-        <form onSubmit={onSubmit} className="modal__form">
+        <form onChange={(e) => setIsValid(e.currentTarget.checkValidity())} onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type='submit' className="modal__submit">{buttonText}</button>
+          <button type='submit' className="modal__submit" disabled={!isValid}>{buttonText}</button>
         </form>
       </div>
     </div>

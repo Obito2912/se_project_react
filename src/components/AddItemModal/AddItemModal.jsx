@@ -8,6 +8,8 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
   const [imageUrl, setImageUrl] = useState('');
   const [weather, setWeather] = useState('');
 
+  const token = localStorage.getItem('jwt');
+
   useEffect(() => {
     // Empty the inputs
     setName('');
@@ -29,7 +31,7 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItemModalSubmit({ name, imageUrl, weather });
+    onAddItemModalSubmit({ name, imageUrl, weather }, token);
   }
   
   return (
@@ -46,17 +48,19 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
           id="name"
           placeholder="Name"
           value={name}
-          onChange={handleNameChange} />
+          onChange={handleNameChange}
+          required
+          minLength={2} />
       </label>
       <label htmlFor="imageUrl" className="modal__label">
         Image <input
-          type="text"
+          type="url"
           className="modal__input"
           id="imageUrl"
           placeholder="Image Url"
           value={imageUrl}
           onChange={handleImageUrlChange}
-        />
+          required />
       </label>
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
@@ -68,7 +72,8 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
             className="modal__radio-input"
             value='hot'
             checked={weather === 'hot'}
-            onChange={handleWeatherChange} />
+            onChange={handleWeatherChange}
+            required />
           Hot
         </label>
         <label htmlFor="warm" className="modal__label modal__label_type_radio">

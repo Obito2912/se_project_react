@@ -1,0 +1,18 @@
+.update__modal_name,
+.update__modal_avatar {
+    display: block;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.update__modal_name {
+    margin-bottom: 24px;
+}
+
+.modal__submit:disabled {
+    background-color: #00000060;
+    cursor: default;
+}

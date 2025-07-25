@@ -1,0 +1,36 @@
+.modal__form.login__modal input[type=email],
+.modal__form.login__modal input[type=password] {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #000;
+    outline: none;
+}
+
+.modal__form.login__modal input[type=email] {
+    margin: 8px 0 24px;
+}
+
+.modal__form.login__modal input[type=password] {
+    margin-top: 8px;
+}
+
+.login__modal .modal__button-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.secondary__option {
+    margin: 0;
+    padding: 0;
+    background-color: inherit;
+    color: #00000050;
+    align-self: center;
+}
+
+.main__btn {
+    margin: 0;
+    padding: .55em 1em;
+    background-color: #000;
+    color: #fff;
+}

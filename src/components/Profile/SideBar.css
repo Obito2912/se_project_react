@@ -1,4 +1,4 @@
-.sidebar {
+.sidebar__user-info {
     display: flex;
     gap: 16px;
 }
@@ -6,6 +6,25 @@
 .sidebar__avatar {
     width: 56px;
     height: 56px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.sidebar__avatar_placeholder {
+    border-radius: 50%;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000030;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+}
+
+.sidebar__avatar_initial {
+    font-weight: bold;
+    font-size: 1.25rem;
 }
 
 .sidebar__username {
@@ -14,4 +33,18 @@
     place-content: center;
     font-weight: bold;
     font-size: 1.25rem;
+}
+
+.sidebar__update-btn,
+.sidebar__signout-btn {
+    border: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    padding: 0;
+}
+
+.sidebar__update-btn {
+    margin: 24px 0 8px;
 }
