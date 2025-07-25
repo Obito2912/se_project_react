@@ -7,6 +7,10 @@ function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner === currentUser?._id;
 
+  const itemDeleteButtonClassName = (
+  `modal__delete-item ${isOwn ? '' : 'modal__delete-item_hidden'}`
+);
+
   return (
     <div className={`modal ${isOpen && 'modal__opened'}`}>
       <div className="modal__content modal__content_type_image">
@@ -19,7 +23,7 @@ function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
             <h2 className="modal__caption">{card.name}</h2>
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
-          {isOwn && <button onClick={() => onDeleteClick(card)} className="modal__delete-item">Delete Item</button>}
+          {isOwn && <button onClick={() => onDeleteClick(card)} className={itemDeleteButtonClassName}>Delete Item</button>}
         </div>
       </div>
     </div>
