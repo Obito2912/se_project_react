@@ -1,7 +1,11 @@
 import './RegisterModal.css';
 import button from '../../images/close-btn.svg';
+import { useState } from 'react';
 
 function RegisterModal({ onClose, isOpen, handleLogInClick, onRegister }) {
+    const [isValid, setIsValid] = useState(false);
+
+
     return (
         <div className={`modal ${isOpen && 'modal__opened'}`}>
             <div className="modal__content">
@@ -10,7 +14,7 @@ function RegisterModal({ onClose, isOpen, handleLogInClick, onRegister }) {
                     <img src={button} alt="Close button" />
                 </button>
 
-                <form onSubmit={onRegister} className="modal__form register__modal">
+                <form onChange={(e) => setIsValid(e.currentTarget.checkValidity())} onSubmit={onRegister} className="modal__form register__modal">
                     <label htmlFor="register-email">Email*
                         <input type="email" required name='email' id='register-email' />
                     </label>
@@ -24,7 +28,7 @@ function RegisterModal({ onClose, isOpen, handleLogInClick, onRegister }) {
                         <input type="url" required name='avatar' id='register-avatar' />
                     </label>
                     <div className="modal__button-container">
-                        <button type='submit' className={`modal__submit ${isOpen && 'main__btn'}`}>Sign Up</button>
+                        <button type='submit' className={`modal__submit ${isOpen && 'main__btn'}`} disabled={!isValid}>Sign Up</button>
                         <button type='button' onClick={handleLogInClick} className={`modal__submit ${isOpen && 'secondary__option'}`}>Or Log In</button>
                     </div>
                 </form>
