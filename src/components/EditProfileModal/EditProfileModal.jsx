@@ -22,7 +22,7 @@ function EditProfileModal({ onUpdateSubmit, isOpen, onClose }) {
       buttonText={"Save changes"}
       isOpen={isOpen}
       onClose={onClose}
-      onCustomClick={onUpdateSubmit}
+      onSubmit={onUpdateSubmit}
     >
       <label htmlFor="update-name">
         Name *

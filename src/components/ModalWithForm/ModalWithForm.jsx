@@ -8,10 +8,9 @@ function ModalWithForm({
   title,
   onClose,
   isOpen,
-  onSubmit,
   classNames = {},
   secondaryBtn = null,
-  onCustomClick = null,
+  onSubmit = null,
 }) {
   const [isValid, setIsValid] = useState(false);
   return (
@@ -24,7 +23,7 @@ function ModalWithForm({
 
         <form
           onChange={(e) => setIsValid(e.currentTarget.checkValidity())}
-          onSubmit={onCustomClick}
+          onSubmit={onSubmit}
           className={`modal__form ${classNames.form}`}
         >
           {children}

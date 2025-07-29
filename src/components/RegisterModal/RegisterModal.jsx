@@ -8,7 +8,7 @@ function RegisterModal({ onClose, isOpen, handleLogInClick, onRegister }) {
       buttonText={"Sign Up"}
       isOpen={isOpen}
       onClose={onClose}
-      onCustomClick={onRegister}
+      onSubmit={onRegister}
       classNames={{
         form: "register__form",
       }}

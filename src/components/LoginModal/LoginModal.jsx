@@ -8,7 +8,7 @@ function LoginModal({ onClose, isOpen, handleSignUpClick, onSignIn }) {
       buttonText={"Log In"}
       isOpen={isOpen}
       onClose={onClose}
-      onCustomClick={onSignIn}
+      onSubmit={onSignIn}
       classNames={{
         form: "login__form",
       }}
