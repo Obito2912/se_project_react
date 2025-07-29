@@ -1,40 +1,50 @@
-import './RegisterModal.css';
-import button from '../../images/close-btn.svg';
-import { useState } from 'react';
+import "./RegisterModal.css";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function RegisterModal({ onClose, isOpen, handleLogInClick, onRegister }) {
-    const [isValid, setIsValid] = useState(false);
+  return (
+    <ModalWithForm
+      title={"Sign Up"}
+      buttonText={"Sign Up"}
+      isOpen={isOpen}
+      onClose={onClose}
+      onCustomClick={onRegister}
+      classNames={{
+        form: "register__form",
+      }}
+      secondaryBtn={
+        <button
+          type="button"
+          onClick={handleLogInClick}
+          className="modal__submit secondary__option"
+        >
+          Or Log In
+        </button>
+      }
+    >
+      <label htmlFor="register-email">
+        Email*
+        <input type="email" required name="email" id="register-email" />
+      </label>
+      <label htmlFor="register-password">
+        Password*
+        <input
+          type="password"
+          required
+          name="password"
+          id="register-password"
+        />
+      </label>
+      <label htmlFor="register-name">
+        Name*
+        <input type="text" required name="name" id="register-name" />
+      </label>
+      <label htmlFor="register-avatar">
+        Avatar URL*
+        <input type="url" required name="avatar" id="register-avatar" />
+      </label>
+    </ModalWithForm>
+  );
+}
 
-
-    return (
-        <div className={`modal ${isOpen && 'modal__opened'}`}>
-            <div className="modal__content">
-                <h2 className="modal__title">Sign Up</h2>
-                <button onClick={onClose} type="button" className="modal__close">
-                    <img src={button} alt="Close button" />
-                </button>
-
-                <form onChange={(e) => setIsValid(e.currentTarget.checkValidity())} onSubmit={onRegister} className="modal__form register__modal">
-                    <label htmlFor="register-email">Email*
-                        <input type="email" required name='email' id='register-email' />
-                    </label>
-                    <label htmlFor="register-password">Password*
-                        <input type="password" required name='password' id='register-password' />
-                    </label>
-                    <label htmlFor="register-name">Name*
-                        <input type="text" required name='name' id='register-name' />
-                    </label>
-                    <label htmlFor="register-avatar">Avatar URL*
-                        <input type="url" required name='avatar' id='register-avatar' />
-                    </label>
-                    <div className="modal__button-container">
-                        <button type='submit' className={`modal__submit ${isOpen && 'main__btn'}`} disabled={!isValid}>Sign Up</button>
-                        <button type='button' onClick={handleLogInClick} className={`modal__submit ${isOpen && 'secondary__option'}`}>Or Log In</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
-};
-
-export default RegisterModal
+export default RegisterModal;

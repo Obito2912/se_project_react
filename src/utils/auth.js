@@ -1,14 +1,7 @@
+import { checkResponse } from './api'
+
 const baseUrl = "http://localhost:3001";
 
-const checkResponse = (res, customErrorMessage) => {
-    if (res.ok) {
-        return res.json();
-    }
-
-    const baseMessage = `Error: ${res.status}`;
-    const fullMessage = customErrorMessage ? `${customErrorMessage} (${baseMessage})` : baseMessage;
-    return Promise.reject(fullMessage);
-}
 
 export function checkToken(token) {
   return fetch(`${baseUrl}/users/me`, {

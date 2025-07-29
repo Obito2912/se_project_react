@@ -1,32 +1,56 @@
-import './EditProfileModal.css';
-import button from '../../images/close-btn.svg';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./EditProfileModal.css";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function EditProfileModal({ onUpdateSubmit, isOpen, onClose }) {
-    const [isValid, setIsValid] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
 
-    return (
-        <div className={`modal ${isOpen && 'modal__opened'}`}>
-            <div className="modal__content">
-                <h2 className="modal__title">Change profile data</h2>
-                <button onClick={onClose} type="button" className="modal__close">
-                    <img src={button} alt="Close button" />
-                </button>
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
 
-                <form onChange={(e) => setIsValid(e.currentTarget.checkValidity())} onSubmit={onUpdateSubmit} className="modal__form update__modal">
-                    <label htmlFor="update-name">Name *
-                        <input className='update__modal_name' type="text" name='name' id='update-name' minLength={2} required />
-                    </label>
-                    <label htmlFor="update-avatar">Avatar *
-                        <input className='update__modal_avatar' type="url" name='avatar' id='update-avatar' required />
-                    </label>
-                    <div className="modal__button-container">
-                        <button type='submit' className='modal__submit' disabled={!isValid}>Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
-};
+  useEffect(() => {
+    if (isOpen && currentUser) {
+      setName(currentUser.name || "");
+      setAvatar(currentUser.avatar || "");
+    }
+  }, [isOpen, currentUser]);
 
-export default EditProfileModal
+  return (
+    <ModalWithForm
+      title={"Change profile data"}
+      buttonText={"Save changes"}
+      isOpen={isOpen}
+      onClose={onClose}
+      onCustomClick={onUpdateSubmit}
+    >
+      <label htmlFor="update-name">
+        Name *
+        <input
+          className="update__modal_name"
+          type="text"
+          name="name"
+          id="update-name"
+          minLength={2}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </label>
+      <label htmlFor="update-avatar">
+        Avatar *
+        <input
+          className="update__modal_avatar"
+          type="url"
+          name="avatar"
+          id="update-avatar"
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+          required
+        />
+      </label>
+    </ModalWithForm>
+  );
+}
+
+export default EditProfileModal;

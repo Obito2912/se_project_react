@@ -1,25 +1,19 @@
-.modal__form.register__modal input[type=email],
-.modal__form.register__modal input[type=password],
-.modal__form.register__modal input[type=text],
-.modal__form.register__modal input[type=url] {
+.modal__form.register__form input[type=email],
+.modal__form.register__form input[type=password],
+.modal__form.register__form input[type=text],
+.modal__form.register__form input[type=url] {
     border: none;
     width: 100%;
     border-bottom: 1px solid #000;
     outline: none;
 }
 
-.modal__form.register__modal input[type=email],
-.modal__form.register__modal input[type=password],
-.modal__form.register__modal input[type=text] {
+.modal__form.register__form input[type=email],
+.modal__form.register__form input[type=password],
+.modal__form.register__form input[type=text] {
     margin: 8px 0 24px;
 }
 
-.modal__form.register__modal input[type=url] {
+.modal__form.register__form input[type=url] {
     margin-top: 8px;
-}
-
-.register__modal .modal__button-container {
-    display: flex;
-    gap: 12px;
-    margin-top: 32px;
 }
