@@ -1,4 +1,7 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.computersforpeace.net"
+    : "http://localhost:3001";
 
 const checkResponse = (res, customErrorMessage) => {
   if (res.ok) {
@@ -25,7 +28,7 @@ function addItem({ name, imageUrl, weather }, token) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then(res => checkResponse(res, "Failed to add item"));
+  }).then((res) => checkResponse(res, "Failed to add item"));
 }
 
 function deleteItem(id, token) {
@@ -50,20 +53,28 @@ function updateUser({ name, avatar }, token) {
 
 function addCardLike(id, token) {
   return fetch(`${baseUrl}/items/${id}/likes`, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).then((res) => checkResponse(res, 'Failed to like item'));
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => checkResponse(res, "Failed to like item"));
 }
 
 function removeCardLike(id, token) {
   return fetch(`${baseUrl}/items/${id}/likes`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).then((res) => checkResponse(res, 'Failed to unlike item'));
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => checkResponse(res, "Failed to unlike item"));
 }
 
-export { getItems, addItem, deleteItem, checkResponse, updateUser, addCardLike, removeCardLike };
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  checkResponse,
+  updateUser,
+  addCardLike,
+  removeCardLike,
+};

@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://wtwr.computersforpeace.net",
   "scripts": {
     "start": "vite --open",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && scp -r ./dist/* ovinsonlugo12@wtwr.computersforpeace.net:/home/ovinsonlugo12/frontend"
   },
   "dependencies": {
     "react": "^19.1.0",
